@@ -128,9 +128,9 @@ make_efi() {
 
         # EFI Shell 2.0 for UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=UEFI_Shell )
         # moved to https://github.com/tianocore/edk2/tree/master/ShellBinPkg
-        curl -o ${work_dir}/iso/EFI/shellx64_v2.efi https://raw.githubusercontent.com/tianocore/edk2/master/ShellBinPkg/UefiShell/X64/Shell.efi
+        curl -o ${work_dir}/iso/EFI/shellx64_v2.efi https://raw.githubusercontent.com/tianocore/edk2/UDK2018/ShellBinPkg/UefiShell/X64/Shell.efi
         # EFI Shell 1.0 for non UEFI 2.3+ ( http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=Efi-shell )
-        curl -o ${work_dir}/iso/EFI/shellx64_v1.efi https://raw.githubusercontent.com/tianocore/edk2/master/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
+        curl -o ${work_dir}/iso/EFI/shellx64_v1.efi https://raw.githubusercontent.com/tianocore/edk2/UDK2018/EdkShellBinPkg/FullShell/X64/Shell_Full.efi
         : > ${work_dir}/build.${FUNCNAME}
         echo -e "$_g >$_W done $_n"
     fi
@@ -141,7 +141,7 @@ make_efiboot() {
     if [[ ! -e ${work_dir}/build.${FUNCNAME} ]]; then
         echo -e -n "$_r >$_W Prepare ${install_dir}/iso/EFI \n $_n"
         mkdir -p ${work_dir}/iso/EFI/kiso
-        truncate -s 31M ${work_dir}/iso/EFI/kiso/kdeosiso.img
+        truncate -s 64M ${work_dir}/iso/EFI/kiso/kdeosiso.img
         mkfs.vfat -n KAOS_EFI ${work_dir}/iso/EFI/kiso/kdeosiso.img
 
         mkdir -p ${work_dir}/efiboot
@@ -159,7 +159,7 @@ make_efiboot() {
 
         mkdir -p ${work_dir}/efiboot/loader/entries
         cp boot-files/loader/loader.conf ${work_dir}/efiboot/loader/
-        cp boot-files/loader/splash.bmp ${work_dir}/efiboot/loader/
+        #cp boot-files/loader/splash.bmp ${work_dir}/efiboot/loader/
         cp boot-files/loader/entries/uefi-shell-v2-x86_64.conf ${work_dir}/efiboot/loader/entries/
         cp boot-files/loader/entries/uefi-shell-v1-x86_64.conf ${work_dir}/efiboot/loader/entries/
 
@@ -187,7 +187,7 @@ make_overlay() {
         echo -e -n "$_r >$_W Prepare overlay-image \n $_n"
         mkdir -p ${work_dir}/overlay/etc/pacman.d
         cp -Lr overlay ${work_dir}/
-        wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist http://github.com/KaOSx/core/raw/master/pacman-mirrorlist/mirrorlist
+        wget -O ${work_dir}/overlay/etc/pacman.d/mirrorlist https://github.com/KaOSx/core/raw/master/pacman-mirrorlist/mirrorlist
         sed -i "s/#Server/Server/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
         sed -i -e "s/@carch@/${arch}/g" ${work_dir}/overlay/etc/pacman.d/mirrorlist
        

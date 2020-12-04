@@ -1,0 +1,45 @@
+﻿MenuBar=Disabled
+Width 1600=1080
+﻿Height 900=660
+
+[CompactMode]
+FontWeight=50
+
+[DetailsMode]
+FontWeight=50
+
+[FileMetaDataConfigurationDialog]
+Height 900=295
+Width 1600=286
+
+[General]
+FilterBar=true
+GlobalViewProps=true
+ShowCopyMoveMenu=true
+ShowToolTips=true
+ViewPropsTimestamp=2017,7,8,21,28,43
+
+[IconsMode]
+FontWeight=50
+IconSize=22
+PreviewSize=48
+
+[MainWindow]
+Height 900=703
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+Width 1600=1145
+
+[PlacesPanel]
+IconSize=22
+
+[PreviewSettings]
+Plugins=audiothumbnail,directorythumbnail,htmlthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,calligra_odg_thumbnail,stage_odp_thumbnail,sheets_ods_thumbnail,words_odt_thumbnail,gsthumbnail,svgthumbnail,textthumbnail,ffmpegthumbs,kenericwmf
+
+[SettingsDialog]
+Height 900=449
+Width 1600=513
+
+[ViewPropertiesDialog]
+Height 900=260
+Width 1600=357

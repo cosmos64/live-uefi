@@ -30,11 +30,11 @@ alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --colo
 alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
 alias vp='vim PKGBUILD'
 alias vs='vim SPLITBUILD'
-alias upd='mirror-check && sudo pacman -Syu'
+alias upd='mirror-check --fast && sudo pacman -Syu'
 alias dvdburn='growisofs -Z /dev/sr0 -R -J'
+alias :pf='pkgfile -vri'
 
 # ex - archive extractor
 # usage: ex <file>
@@ -60,11 +60,16 @@ ex ()
   fi
 }
 
-# vim stuff
-export EDITOR=vim
-export VISUAL=vim
+# default editor
+export EDITOR=micro
+export VISUAL=micro
 alias vi=vim
 
 
 # prompt
 PS1='[\u@\h \W]\$ '
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/share/bash/powerline.sh

@@ -1,17 +1,68 @@
 # KaOS-Live Packages file
-# Version: 20161014
+# Version: 20201114
 
 ### These should probably be present
-base  
+#base 
 attr
 bash
+bzip2
+coreutils
+cryptsetup
+device-mapper
+dhcpcd
+diffutils
+e2fsprogs
+file
+filesystem
+findutils
+gawk
+gcc-libs
+gettext
+glibc
+grep
+gzip
+iputils
+jfsutils
+less
+libpipeline
+licenses
+linux
+logrotate
+lvm2
+man-pages
+mdadm
+nano
+net-tools
+pacman
+pacman-mirrorlist
+pciutils
+pcmciautils
+perl
+ppp
+procps-ng
+psmisc
+reiserfsprogs
+rp-pppoe
+s-nail
+sed
+shadow
+sysfsutils
+systemd
+tar
+texinfo
+traceroute
+usbutils
+util-linux
+vi
+wget
+which
+wpa_supplicant
+xfsprogs
 binutils
-syslinux
 cdrkit
 sshfs
 linux-headers
 squashfs-tools
-##aufs3-util
 lsb-release
 
 # basic needs
@@ -22,9 +73,6 @@ prebootloader
 efibootmgr
 ##refind-efi
 grub
-##grub-common
-##grub-bios
-##grub-efi
 os-prober
 hwdetect
 dmidecode
@@ -35,24 +83,16 @@ ntfs-3g
 btrfs-progs
 dosfstools
 gptfdisk
-jfsutils
 testdisk
 
 # drivers & system utilities
-alsa-lib
 alsa-oss
-alsa-utils
 lm_sensors
 fuse
 cpupower
 iasl
 
-# catalyst fixes
-#xinetd
-#netkit-bsd-finger
-#libstdc++5
-
-# generally useful tools that dont require X
+# generally useful tools that don't require X
 bash-completion
 openssh
 nmap
@@ -71,9 +111,9 @@ zip
 
 # wireless drivers and tools
 wireless_tools
-wireless-regdb
+##wireless-regdb
 dnsutils
-crda
+##crda
 usb_modeswitch
 vpnc
 openvpn
@@ -97,9 +137,10 @@ zd1211-firmware
 ##intel-ucode build into the kernel starting with linux 4.5
 
 # xorg base
-xorg
+#xorg not using xorg group, set individual
 xorg-server
 xorg-server-utils
+xorg-utils
 xorg-xkb-utils
 xorg-xauth
 xorg-xinit
@@ -112,14 +153,13 @@ xorg-fonts-misc
 # xorg video drivers
 xf86-video-amdgpu
 xf86-video-ati
-xf86-video-intel
-xf86-video-nouveau
+##xf86-video-intel
+##xf86-video-nouveau
 xf86-video-vesa
 xf86-video-vmware
 
 # xorg input drivers
-xorg-input-drivers
-xf86-input-synaptics
+##xf86-input-synaptics
 xf86-input-wacom
 
 # fonts
@@ -130,7 +170,8 @@ ttf-dejavu
 terminus-font
 ttf-liberation
 wqy-microhei
-ttf-indic-otf
+###ttf-indic-otf
+lohit-fonts
 
 # additional stuff that needs xorg
 hicolor-icon-theme
@@ -138,51 +179,53 @@ hicolor-icon-theme
 # sound (basic)
 phonon-qt5-backend-gstreamer
 #phonon-qt5-backend-vlc
-libcanberra-gstreamer
+libcanberra
 libao
 alsa-lib
 alsa-utils
 
 # pulse support
 pulseaudio
-pulseaudio-alsa
-libcanberra-pulse
+alsa-plugins
+##pulseaudio-alsa
 
 # kf5 (minimal base)
 kf5
 kde-common
 plasma-workspace
 plasma-desktop
-kde-baseapps
+dolphin
+kdialog
+kfind
+keditbookmarks
 systemsettings
-oxygen
-##oxygen-fonts
+##oxygen
 breeze
-#breeze4
-#qtcurve4
-###sni-qt
+breeze-gtk
+#qtcurve-gtk
 sddm
 kate
 konsole
 plasma-pa
-#kmix
+##kmix
 
 # themes 
 midna-themes
-#plasma-workspace-wallpapers
-#KaOS_wallpapers
+plasma-workspace-wallpapers
+kaos-wallpapers
 grub-theme-midna
-python2-xlib
-##python2-v4l2capture
-python2-imaging
 ##flattr-icons
-kaptan
+croeso
+powerline
 
 # kde (everything else)
 kinfocenter
+plasma-disks
 kmenuedit
+khotkeys
 ksysguard
 kwalletmanager
+kwallet-pam
 milou
 partitionmanager
 partitionmanager-debug
@@ -191,14 +234,15 @@ okular
 ark
 spectacle
 yakuake
-#kgpg
-#sweeper
-##kdenetwork-kppp
+kgpg
+sweeper
 ##appmenu-qt5
 kdeconnect-kde
 sddm-kcm
 wacomtablet
-user-kcm
+###user-kcm replaced by plasma-desktop
+kmarkdownwebview
+dolphin-plugins
 
 # locales
 #kde-l10n-ca
@@ -215,9 +259,9 @@ user-kcm
 plasma-nm
 modemmanager
 mobile-broadband-provider-info
-networkmanager-dispatcher-ntpd
-#kcm-ufw
-ufw  # install ufw until kcm-ufw is ported/forked
+ntp
+###networkmanager-dispatcher-ntpd
+nomad-firewall
 
 # installer + dependencies
 netctl   
@@ -225,7 +269,6 @@ rsync
 hdparm
 hwinfo      
 iso-codes
-###keyboardctl
 console-setup
 librsvg
 mkinitcpio-openswap  #  needed for luks on swap
@@ -235,38 +278,33 @@ calamares-debug
 welcome
 
 ## extragear
-#quassel
-##rekonq
-qupzilla
+quassel
+##konqueror
+falkon
+pdfreader
 bluedevil
-##qmmp
 ##vlc
-##dragon
-#smplayer 
-#smtube
-##amarok
+smplayer 
+smtube
 ##clementine
-#cantata
-#kde-gtk-config
-#oxygen-gtk2
-##imagewriter
+##cantata
+elisa
+kde-gtk-config
+##oxygen-gtk2
 isowriter
-#tomoyo-tools
-#kcp
-#base-devel
-##python2-gobject3 no longer needed systemd 209
+tomoyo-tools
+kcp
+base-devel
 ##clamav
 init-live
 kdeplasma-addons
-###kdeplasma-applets-appmenu-qml
 octopi
+pacmanlogviewer
 inxi
 kscreen
 ###kmymoney
-###plasma-mediacenter
-#systemd-kcm
+systemd-kcm
 xdg-user-dirs
-###notepad
 ##skanlite
 ##okteta
 ##kdevelop
@@ -277,81 +315,79 @@ qt5-wayland
 ##kanagram
 ##kig
 ##kup
-#seafile-client
+seafile-client
 ###dropbox
 ###webcamoid 
-#kamoso
+kamoso
 ##qbittorrent
 kdegraphics-thumbnailers
 kdesdk-thumbnailers
 ffmpegthumbs
 audiothumbs
-keneric
-##kget
-#fatrat
-#kruler
-#kcharselect
+##keneric
+kget
+##kruler
+kcharselect
 ##khangman
 kompare
 ##kolourpaint
 ##kcalc
 ##kbruch
-#simplescreenrecorder
-#ksshaskpass
-##kdepim
+simplescreenrecorder
+ksshaskpass
 ##trojita
 ##choqok
-#krita
-#pepper-flash
+##krita
+pepper-flash
 micro
-#kdepim
-#kdepim-addons
+##kdepim-addons
+virtualbox-guest-utils
 
-#kodi
-#blender
-#kdenlive
-#digikam
-#spideroak
-#calibre
-#grub2-editor
+##kodi
+##blender
+##kdenlive
+##digikam
+##spideroak
+##calibre
+grub2-editor
 
 # burn
-#dvd+rw-tools
-#vcdimager
-###transcode
-#emovix
-#k3b
+dvd+rw-tools
+vcdimager
+emovix
+k3b
 ###qisoburn
 
 # debugging
 gdb
 
 # printing
-#cups
-#gutenprint 
-###system-config-printer # gtk3
-#cups-pdf 
-#print-manager
-#hplip
-#pyqt5-python3
-#epsoneplijs
-#epson-inkjet-printer-escpr
-#samba
-#a2ps
+cups
+gutenprint 
+system-config-printer 
+cups-pdf 
+print-manager
+hplip
+pyqt5-python3
+##epsoneplijs
+epson-inkjet-printer-escpr
+samba
+a2ps
 
 # office
-#calligra
-#calligra-l10n
+##calligra
+##calligra-l10n
+libreoffice
 
 ## games
-#kpat
+kpat
 ##bovo
 ##kbounce
 
 #IM
-#telepathy-idle
-#telepathy-haze
-#telepathy-gabble
-#telepathy-logger
-#telepathy-salut
-#kde-telepathy
+telepathy-idle
+telepathy-haze
+telepathy-gabble
+telepathy-logger
+telepathy-salut
+kde-telepathy
